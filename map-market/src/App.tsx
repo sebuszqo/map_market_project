@@ -1,26 +1,15 @@
 import React from "react";
 import "./App.css";
-import {FaSearchLocation} from "react-icons/fa";
-// import {FaSearchLocation} from "react-icons/all";
+import {Header} from "./componens/layout/Header";
+import {Map} from "./componens/Map/Map";
 
 export const App = () => {
-  return (
-      <>
-        <div className="wrapper">
-          <header>
-            <h1>
-              <strong>Map</strong> Market
-            </h1>
-            <button>New announcement</button>
-            <div className="search">
-              <input type="text"/>
-              <button>
-                <FaSearchLocation/>
-              </button>
+    return (
+        <>
+            <div className="wrapper">
+                <Header/>
+                <Map/>
             </div>
-          </header>
-          <div className="map"></div>
-        </div>
-      </>
-  );
+        </>
+    );
 };
