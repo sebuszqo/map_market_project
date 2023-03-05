@@ -1,0 +1,23 @@
+header {
+    font-family: "American Typewriter", sans-serif;
+    background: darkseagreen;
+    padding: 12px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+header h1 {
+    font-size: 25px;
+    font-weight: 200;
+}
+
+.search {
+    display: flex;
+}
+
+.search input {
+    width: 11em;
+    margin-right: 3px;
+}
+
