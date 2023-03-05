@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "types": [
-        "../you-announce-backend/types"
+        "../map-market-backend/types"
       ]
     }
   }
