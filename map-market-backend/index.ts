@@ -14,9 +14,11 @@ app.use(
 app.use(json());
 
 // @TODO Routers
-app.get("/", async (req, res) => {
-  throw new ValidationError("Sorry");
-});
+
+// app.get("/", async (req, res) => {
+//   throw new ValidationError("Sorry");
+// });
+
 app.use(handleError);
 
 app.listen(3001, "0.0.0.0", () => {
