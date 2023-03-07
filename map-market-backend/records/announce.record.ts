@@ -14,7 +14,7 @@ export class AnnounceRecord implements AnnounceEntity {
   public url: string;
   public description: string;
 
-  constructor(obj: AnnounceEntity) {
+  constructor(obj: NewAnnounceEntity) {
     if (!obj.name || obj.name.length > 100) {
       throw new ValidationError("Name cannot be empty or longer than 100.");
     }
@@ -35,5 +35,12 @@ export class AnnounceRecord implements AnnounceEntity {
     if (typeof obj.latitude !== "number" || typeof obj.longitude !== "number") {
       throw new ValidationError("Sorry, we couldn't locate the address.");
     }
+    this.id = obj.id;
+    this.name = obj.name;
+    this.description = obj.description;
+    this.latitude = obj.latitude;
+    this.longitude = obj.longitude;
+    this.url = obj.url;
+    this.price = obj.price;
   }
 }
