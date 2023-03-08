@@ -1,9 +1,13 @@
-import { AnnounceEntity } from "../types";
-import { ValidationError } from "../utils/error";
+import {AnnounceEntity} from "../types";
+import {ValidationError} from "../utils/error";
+import {pool} from "../utils/db";
+import {FieldPacket} from "mysql2";
 
 interface NewAnnounceEntity extends Omit<AnnounceEntity, "id"> {
   id?: string;
 }
+
+type AnnounceResults = [AnnounceEntity[], FieldPacket[]];
 
 export class AnnounceRecord implements AnnounceEntity {
   public id: string;
@@ -35,6 +39,7 @@ export class AnnounceRecord implements AnnounceEntity {
     if (typeof obj.latitude !== "number" || typeof obj.longitude !== "number") {
       throw new ValidationError("Sorry, we couldn't locate the address.");
     }
+
     this.id = obj.id;
     this.name = obj.name;
     this.description = obj.description;
@@ -42,5 +47,27 @@ export class AnnounceRecord implements AnnounceEntity {
     this.longitude = obj.longitude;
     this.url = obj.url;
     this.price = obj.price;
+  }
+
+  static async findOne(id: string): Promise<AnnounceRecord | null> {
+    const [results] = (await pool.execute(
+        "SELECT * FROM `announcement` WHERE id=:id",
+        {
+          id,
+        }
+    )) as AnnounceResults;
+    return results.length === 0 ? null : new AnnounceRecord(results[0]);
+  }
+
+  static async findAll(name: string): Promise<AnnounceRecord[] | null> {
+    const [results] = (await pool.execute(
+        "SELECT * FROM `announcement` WHERE name LIKE :search",
+        {
+          search: `%${name}%`,
+        }
+    )) as AnnounceResults;
+    return results.length === 0
+        ? null
+        : results.map((result) => new AnnounceRecord(result));
   }
 }
