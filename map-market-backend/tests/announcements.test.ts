@@ -1,10 +1,15 @@
 // TDD for static methods
 
 import {AnnounceRecord} from "../records/announce.record";
+import {pool} from "../utils/db";
+
+afterAll(async () => {
+  await pool.end();
+});
 
 test("Announcement records returns data from database for one entry.", async () => {
   const announcement = await AnnounceRecord.findOne("abc");
-  console.log(announcement);
+  // console.log(announcement);
   expect(announcement).toBeDefined();
   expect(announcement.id).toBe("abc");
   expect(announcement.name).toBe("Testowe");
@@ -21,13 +26,13 @@ test("Announcement records returns null from database for entry that not exists.
 });
 
 test("Announcement records returns array of found entries, when searching for 'a'.", async () => {
-  const announcements = await AnnounceRecord.findAll("123");
+  const announcements = await AnnounceRecord.findAll("e");
+  console.log(announcements);
   expect(announcements).not.toEqual([]);
   expect(announcements[0].id).toBeDefined();
 });
 
 test("Announcement records returns empty array, when searching for something that does not exists.", async () => {
   const announcements = await AnnounceRecord.findAll("------------");
-  expect(announcements).not.toEqual([]);
-  expect(announcements[0].id).toBeDefined();
+  expect(announcements).toBeNull();
 });

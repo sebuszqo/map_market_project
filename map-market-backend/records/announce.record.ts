@@ -59,6 +59,15 @@ export class AnnounceRecord implements AnnounceEntity {
     return results.length === 0 ? null : new AnnounceRecord(results[0]);
   }
 
-  static async findAll(s: string) {
+  static async findAll(name: string): Promise<AnnounceRecord[] | null> {
+    const [results] = (await pool.execute(
+        "SELECT * FROM `announcement` WHERE name LIKE :search",
+        {
+          search: `%${name}%`,
+        }
+    )) as AnnounceResults;
+    return results.length === 0
+        ? null
+        : results.map((result) => new AnnounceRecord(result));
   }
 }
