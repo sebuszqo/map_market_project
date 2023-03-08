@@ -4,6 +4,7 @@ import {AnnounceRecord} from "../records/announce.record";
 
 test("Announcement records returns data from database for one entry.", async () => {
   const announcement = await AnnounceRecord.findOne("abc");
+  console.log(announcement);
   expect(announcement).toBeDefined();
   expect(announcement.id).toBe("abc");
   expect(announcement.name).toBe("Testowe");
