@@ -58,4 +58,7 @@ export class AnnounceRecord implements AnnounceEntity {
     )) as AnnounceResults;
     return results.length === 0 ? null : new AnnounceRecord(results[0]);
   }
+
+  static async findAll(s: string) {
+  }
 }
