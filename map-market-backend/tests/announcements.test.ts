@@ -27,7 +27,6 @@ test("Announcement records returns null from database for entry that not exists.
 
 test("Announcement records returns array of found entries, when searching for 'a'.", async () => {
   const announcements = await AnnounceRecord.findAll("e");
-  console.log(announcements);
   expect(announcements).not.toEqual([]);
   expect(announcements[0].id).toBeDefined();
 });
@@ -35,4 +34,10 @@ test("Announcement records returns array of found entries, when searching for 'a
 test("Announcement records returns empty array, when searching for something that does not exists.", async () => {
   const announcements = await AnnounceRecord.findAll("------------");
   expect(announcements).toBeNull();
+});
+
+test("Announcement records returns array of found entries, when searching for 'a'.", async () => {
+  const announcements = await AnnounceRecord.findAll("");
+  expect(announcements).not.toBeNull()
+  expect(announcements[0].id).toBeDefined();
 });
