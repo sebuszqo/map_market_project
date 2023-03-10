@@ -1,4 +1,4 @@
-import {AnnounceEntity} from "../types";
+import {AnnounceEntity, SimpleAnnounceEntity} from "../types";
 import {ValidationError} from "../utils/error";
 import {pool} from "../utils/db";
 import {FieldPacket} from "mysql2";
@@ -59,7 +59,8 @@ export class AnnounceRecord implements AnnounceEntity {
     return results.length === 0 ? null : new AnnounceRecord(results[0]);
   }
 
-  static async findAll(name: string): Promise<AnnounceRecord[] | null> {
+  // filtered data we don't want to return whole objects of data at one request - security
+  static async findAll(name: string): Promise<SimpleAnnounceEntity[] | null> {
     const [results] = (await pool.execute(
         "SELECT * FROM `announcement` WHERE name LIKE :search",
         {
@@ -68,6 +69,13 @@ export class AnnounceRecord implements AnnounceEntity {
     )) as AnnounceResults;
     return results.length === 0
         ? null
-        : results.map((result) => new AnnounceRecord(result));
+        : results.map((result) => {
+          const {id, latitude, longitude} = result;
+          return {
+            id,
+            latitude,
+            longitude,
+          };
+        });
   }
 }
