@@ -2,6 +2,7 @@ import {AnnounceEntity, SimpleAnnounceEntity} from "../types";
 import {ValidationError} from "../utils/error";
 import {pool} from "../utils/db";
 import {FieldPacket} from "mysql2";
+import {v4 as uuid} from "uuid";
 
 interface NewAnnounceEntity extends Omit<AnnounceEntity, "id"> {
   id?: string;
@@ -80,5 +81,14 @@ export class AnnounceRecord implements AnnounceEntity {
   }
 
   async insert() {
+    if (!this.id) {
+      this.id = uuid();
+    } else {
+      throw new Error("We cannot insert something that is already inserted");
+    }
+    await pool.execute(
+        "INSERT INTO `announcement` (`id`, `name`, `description`, `price`, `url`, `latitude`,`longitude`) VALUES(:id, :name, :description, :price, :url, :latitude, :longitude)",
+        this
+    );
   }
 }
