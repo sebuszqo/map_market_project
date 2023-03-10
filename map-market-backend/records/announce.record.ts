@@ -78,4 +78,7 @@ export class AnnounceRecord implements AnnounceEntity {
           };
         });
   }
+
+  async insert() {
+  }
 }
