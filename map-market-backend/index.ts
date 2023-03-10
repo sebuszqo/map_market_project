@@ -3,6 +3,7 @@ import cors from "cors";
 import "express-async-errors";
 import {handleError} from "./utils/error";
 import rateLimit from "express-rate-limit";
+import {announcementRouter} from "./routers/announcement.router";
 
 const app = express();
 
@@ -19,11 +20,8 @@ app.use(
         max: 100, // Limit each IP to 100 requests per 'window' (here, per 5 minutes)
     })
 );
-// @TODO Routers
 
-// app.get("/", async (req, res) => {
-//   throw new ValidationError("Sorry");
-// });
+app.use("/announcement", announcementRouter);
 
 app.use(handleError);
 
