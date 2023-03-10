@@ -18,6 +18,7 @@ test("Can build AnnouncementRecord", () => {
     const announcement = new AnnounceRecord({
         ...defaultObj,
     });
+
     expect(announcement.name).toBe("[Test]Test name");
     expect(announcement.description).toBe("this is test description");
     expect(announcement.price).toBe(8);
