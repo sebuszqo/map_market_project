@@ -2,6 +2,7 @@
 
 import {AnnounceRecord} from "../records/announce.record";
 import {pool} from "../utils/db";
+import {AnnounceEntity} from "../types";
 
 afterAll(async () => {
   await pool.end();
@@ -25,7 +26,7 @@ test("Announcement records returns null from database for entry that not exists.
   expect(announcement).toBeNull();
 });
 
-test("Announcement records returns array of found entries, when searching for 'a'.", async () => {
+test("Announcement records returns smaller amount of data, when searching for 'a'.", async () => {
   const announcements = await AnnounceRecord.findAll("e");
   expect(announcements).not.toEqual([]);
   expect(announcements[0].id).toBeDefined();
@@ -36,8 +37,11 @@ test("Announcement records returns empty array, when searching for something tha
   expect(announcements).toBeNull();
 });
 
-test("Announcement records returns array of found entries, when searching for 'a'.", async () => {
+test("Announcement records returns smaller amount of data, when searching for ''.", async () => {
   const announcements = await AnnounceRecord.findAll("");
-  expect(announcements).not.toBeNull()
+  expect(announcements).not.toBeNull();
   expect(announcements[0].id).toBeDefined();
+  // 'as AnnounceEntity to let typescript work'
+  expect((announcements[0] as AnnounceEntity).price).toBeUndefined();
+  expect((announcements[0] as AnnounceEntity).description).toBeUndefined();
 });
