@@ -18,7 +18,7 @@ export const Header = () => {
       <h1>
         <strong>Map</strong> Market
       </h1>
-      <Btn text={"New announcement"} />
+      <Btn to={"/add"} text={"New announcement"} />
       <form className="search" onSubmit={setSearchFromLocalState}>
         <input
           type="text"
