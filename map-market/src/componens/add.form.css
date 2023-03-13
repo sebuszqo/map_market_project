@@ -1,0 +1,43 @@
+.add-form {
+    width: 50%;
+    margin: 70px auto;
+    font-family: "Apple Braille", serif;
+}
+
+.add-form h1 {
+    text-align: center;
+    margin: auto 40px;
+}
+
+.add-form p {
+    font-size: 130%;
+    font-family: "Apple Braille", serif;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.add-form label {
+    /*display: block;*/
+}
+
+.add-form input, textarea {
+    font-family: "Apple Braille", serif;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.add-form p small {
+    font-weight: normal;
+    font-size: 70%;
+}
+
+.add-form button {
+    display: block;
+    padding: 8px 40px;
+    margin: 7% auto 0;
+    width: 70%;
+    background-color: darkseagreen;
+    cursor: pointer;
+}
