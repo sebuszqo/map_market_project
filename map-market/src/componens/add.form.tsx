@@ -1,8 +1,10 @@
 import "./add.form.css";
 import { Btn } from "./common/Btn";
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 
 export const AddForm = () => {
+  const [loading, setLoading] = useState(false);
+  const [id, setId] = useState("");
   const [form, setForm] = useState({
     name: "",
     description: "",
@@ -11,6 +13,43 @@ export const AddForm = () => {
     url: "",
   });
 
+  const saveForm = async (e: SyntheticEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const geoRes = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
+          form.address
+        )}`
+      );
+      const geoData = await geoRes.json();
+
+      const latitude = parseFloat(geoData[0].lat);
+      const longitude = parseFloat(geoData[0].lon);
+
+      const announcementResponse = await fetch(
+        `http://localhost:3001/announcement/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...form,
+            latitude,
+            longitude,
+          }),
+        }
+      );
+      const data = await announcementResponse.json();
+      setId(data.id);
+    } catch (e) {
+      new Error("Sorry, we had problem during adding your announcement");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const updateForm = (key: string, value: any) => {
     setForm((form) => ({
       ...form,
@@ -18,8 +57,16 @@ export const AddForm = () => {
     }));
   };
 
+  if (loading) {
+    return <h2>We are adding your announcement</h2>;
+  }
+
+  if (id) {
+    return <h2>You announcement were added successfully with ID: {id}</h2>;
+  }
+
   return (
-    <form className={"add-form"} action="">
+    <form className={"add-form"} action="" onSubmit={saveForm}>
       <h1>Add your new announce</h1>
       <p>
         <label>Name:</label> <br />
