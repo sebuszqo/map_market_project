@@ -5,6 +5,7 @@ import "../../utils/fix-map-icon";
 import { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../../context/search.context";
 import { SimpleAnnounceEntity } from "types";
+import { SingleAnnounce } from "./single.announce";
 
 export const Map = () => {
   const { search } = useContext(SearchContext);
@@ -17,7 +18,6 @@ export const Map = () => {
       );
       const announcements = await response.json();
       setAnnouncement(announcements);
-      console.log(announcements);
     })();
   }, [search]);
 
@@ -34,7 +34,9 @@ export const Map = () => {
             key={announcement.id}
             position={[announcement.latitude, announcement.longitude]}
           >
-            <Popup>{announcement.id}</Popup>
+            <Popup>
+              <SingleAnnounce id={announcement.id} />
+            </Popup>
           </Marker>
         ))}
       </MapContainer>
