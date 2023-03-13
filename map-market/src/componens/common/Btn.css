@@ -1,11 +1,14 @@
-button {
+button, .btn {
     border: none;
     background: white;
     text-transform: uppercase;
     font-size: 0.8rem;
-    font-weight: 300;
     padding: 5px 18px;
     border-radius: 2px;
+    line-height: 22px;
+    color: black;
+    font-weight: 400;
+    text-decoration: none;
 }
 
 #icon {
