@@ -15,7 +15,7 @@
 
 * [About the Project](#about-the-project)
 * [Built With](#built-with)
-* [Run locally](#Run locally)
+* [Run Locally](#Run Locally)
     * [Prerequisites](#prerequisites)
     * [Installation](#installation)
 * [Author](#author)
@@ -41,7 +41,7 @@ Map-Market is a project that features a map with pins representing advertisement
 * [typescript](https://www.typescriptlang.org)
 * [React.js](https://react.dev)
 
-## Run locally
+## Run Locally
 
 ### Prerequisites
 
