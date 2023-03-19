@@ -100,8 +100,6 @@ export const AddForm = () => {
           onChange={(e) => updateForm("price", Number(e.target.value))}
         />
         <small>Do not type anything if you don't want to show price</small>
-      </p>
-      <p>
         <label>Address:</label> <br />
         <input
           placeholder={"Address (country, city, street)"}
