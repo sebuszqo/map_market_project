@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <h1 align="center">Map-Market</h1>
-<img src="https://socialify.git.ci/sebuszqo/map_market_project/image?font=Inter&language=1&name=1&owner=1&theme=Dark">
+<img src="https://socialify.git.ci/sebuszqo/map_market_project/image?font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Dark">
   <p align="center">
     Map-Market is a location-based advertisement listing project that allows users to browse, search, and add new ads to a map interface
     <br/>
