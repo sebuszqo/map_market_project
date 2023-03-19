@@ -23,7 +23,7 @@
 
 ## About The Project
 
-![Gif File](https://github.com/sebuszqo/map_market_project/blob/main/mapmarket-gif.gif)
+![GifFile](https://github.com/sebuszqo/map_market_project/blob/main/mapmarket-gif.gif)
 
 Map-Market is a project that features a map with pins representing advertisements.
 - Each pin contains information such as the title, description, price, and a link to an auction portal where the item can be purchased.
