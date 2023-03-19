@@ -15,7 +15,7 @@
 
 * [About the Project](#about-the-project)
 * [Built With](#built-with)
-* [Run Locally](#Run Locally)
+* [Run Locally](run-locally)
     * [Prerequisites](#prerequisites)
     * [Installation](#installation)
 * [Author](#author)
