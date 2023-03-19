@@ -15,10 +15,10 @@
 
 * [About the Project](#about-the-project)
 * [Built With](#built-with)
-* [Getting Started](#getting-started)
+* [Run locally](#Run locally)
     * [Prerequisites](#prerequisites)
     * [Installation](#installation)
-* [Author](#authors)
+* [Author](#author)
 
 
 ## About The Project
@@ -34,18 +34,14 @@ Map-Market is a project that features a map with pins representing advertisement
 ## Built With
 
 
-
+* [npm](https://www.npmjs.com)
 * [node.js](https://nodejs.org/en)
-* [typescript](https://www.typescriptlang.org)
 * [express.js](https://expressjs.com)
 * [SQL-MariaDB](https://mariadb.com/kb/en/sql-statements/)
-* [npm](https://www.npmjs.com)
+* [typescript](https://www.typescriptlang.org)
 * [React.js](https://react.dev)
 
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+## Run locally
 
 ### Prerequisites
 
@@ -103,6 +99,6 @@ Start the server
   npm run start
 ```
 
-## Authors
+## Author
 
 * **Sebastian Knap** - *sebuszqo* - [Sebastian Knap](https://github.com/sebuszqo) - **
