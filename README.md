@@ -18,7 +18,7 @@
 * [Getting Started](#getting-started)
     * [Prerequisites](#prerequisites)
     * [Installation](#installation)
-* [Authors](#authors)
+* [Author](#authors)
 
 
 ## About The Project
